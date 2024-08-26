@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/Agbanelo Kellix/Desktop/Lunodumb/kemi/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/Agbanelo Kellix/Desktop/Lunodumb/kemi/./frontend/generated/jar-resources",
+  "staticOutput": "C:/Users/Agbanelo Kellix/Desktop/Lunodumb/kemi/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Users\\Agbanelo Kellix\\Desktop\\Lunodumb\\kemi\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Users\\Agbanelo Kellix\\Desktop\\Lunodumb\\kemi\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Users/Agbanelo Kellix/Desktop/Lunodumb/kemi/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/Agbanelo Kellix/Desktop/Lunodumb/kemi/src/main/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/Agbanelo Kellix/Desktop/Lunodumb/kemi/./frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\Agbanelo Kellix\\Desktop\\Lunodumb\\kemi\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}

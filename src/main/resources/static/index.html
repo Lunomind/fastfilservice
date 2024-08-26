@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <meta name="description" content="LunoSmart is a consolidated stack of intelligent expert systems, united with the shared purpose of serving humanity, enhancing efficiency and boosting productivity">
+    <meta name="keywords" content="Artificial intelligence,Machine Learning,Smart, LunoSmart">
+    <meta name="author" content="LunoSmart">
+    <meta name="title" content="LunoSmart: Smart Bots">
+    <meta name="msapplication-TileColor" content="#6200EA">
+    <meta name="msapplication-TileImage" content="icons/icon-144.png">
+
+
+    <meta name="google-site-verification" content="PpEQx05vW6kTVnS1dTERHG4HdyyxGsUWPo9eDRGcDIU">
+
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="LunoSmart">
+    <link rel="apple-touch-icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>LunoSmart</title>
+
+    <style>
+        /* Your CSS code here */
+        body {
+          margin: var(--header-height) 0 0 0;
+          font-family: var(--body-font);
+          font-size: var(--normal-font-size);
+          background-color: #000;
+          color: var(--text-color);
+        }
+        .home__img {
+          width: 270px;
+          position: absolute;
+          top: -14.6rem;
+          right: 1.5rem;
+
+        }
+
+        .home__data {
+          padding-top: 1.5rem;
+        }
+
+        .home__header {
+          position: relative;
+        }
+
+        .home__title {
+          position: absolute;
+          top: -4rem;
+          left: 1rem;
+          line-height: 6rem;
+          font-size: var(--biggest-font-size);
+          background: var(--text-gradient);
+          color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+
+        .home__subtitle {
+          font-size: var(--big-font-size);
+          margin-bottom: 15px;
+        }
+
+        .home__title-description {
+          font-size: var(--h3-font-size);
+          font-weight: var(--font-medium);
+          margin-bottom: var(--mb-1);
+        }
+
+        .home__description {
+          margin-bottom: var(--mb-2-5);
+          line-height: var(--text-line-height);
+        }
+
+        .home__price {
+          font-size: var(--h3-font-size);
+          font-weight: var(--font-semi-bold);
+          margin-left: var(--mb-0-75);
+        }
+
+        .button {
+          display: inline-block;
+          background-color: purple;
+          color: var(--white-color);
+          padding: 1rem 1.25rem;
+          border-radius: .5rem;
+          transition: .3s;
+        }
+
+        .buttonxy {
+          display: inline-block;
+          background-color: blue;
+          color: var(--white-color);
+          padding: 1rem 1.25rem;
+          border-radius: .5rem;
+          transition: .3s;
+        }
+         .buttonxxy {
+          display: inline-block;
+          background-color: orange;
+          color: var(--white-color);
+          padding: 1rem 1.25rem;
+          border-radius: .5rem;
+          transition: .3s;
+        }
+             .buttonxxyg {
+          display: inline-block;
+          background-color: green;
+          color: var(--white-color);
+          padding: 1rem 1.25rem;
+          border-radius: .5rem;
+          transition: .3s;
+        }
+        .button:hover {
+          background-color: orange;
+        }
+        .discount__titlex {
+
+            font-weight: bold;
+          font-size: 25px;
+          margin-top: 2px;
+        }
+
+
+
+        .button__icon {
+          font-size: 1.2rem;
+        }
+
+        .button--flex {
+          display: inline-flex;
+          align-items: center;
+          column-gap: .75rem;
+        }
+
+        .section {
+          padding: 4rem 0 2rem;
+        }
+
+        .section__title {
+          font-size: var(--bigger-font-size);
+          text-align: center;
+          margin-bottom: var(--mb-2-5);
+        }
+
+        .section__title-gradient {
+          background: var(--text-gradient);
+          color: white;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+
+        /*=============== LAYOUT ===============*/
+        .main {
+          overflow: hidden;
+        }
+        .specs__subtitle {
+          font-size: 13.5px;
+        }
+       #snackbar {
+            visibility: hidden; /* Hidden by default. Visible on click */
+            min-width: 250px; /* Set a default minimum width */
+            margin-left: -125px; /* Center the snackbar */
+            background-color: #333; /* Black background color */
+            color: #fff; /* White text color */
+            text-align: center; /* Centered text */
+            border-radius: 2px; /* Rounded borders */
+            padding: 16px; /* Some padding */
+            position: fixed; /* Sit on top of the screen */
+            z-index: 1; /* Add a z-index if needed */
+            left: 50%; /* Center the snackbar horizontally */
+            bottom: 30px; /* 30px from the bottom */
+            font-size: 17px; /* Increase font size */
+        }
+
+        /* Show the snackbar when clicking on the button (class added with JavaScript) */
+        #snackbar.show {
+            visibility: visible; /* Show the snackbar */
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+            However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* Animations to fade the snackbar in and out */
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+
+</head>
+<body>
+<!--=============== HEADER ===============-->
+<header class="header" id="header">
+    <nav class="nav container">
+        <h2 class="discount__titlex" >l u n o s m a r t</h2>
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#home" class="nav__link active-link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#specs" class="nav__link">Workflow</a>
+                </li>
+
+                <!--
+                <li class="nav__item">
+                    <a href="#case" class="nav__link">Case</a>
+                </li>
+                -->
+                <li class="nav__item">
+                    <a href="#products" class="nav__link">Products</a>
+                </li>
+            </ul>
+
+            <div class="nav__close" id="nav-close">
+                <i class="ri-close-line"></i>
+            </div>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-star-fill"></i>
+        </div>
+    </nav>
+</header>
+
+<main class="main">
+    <!--=============== HOME ===============-->
+    <section class="home section" id="home">
+        <div class="home__container container grid">
+            <div class="desktop-only">
+                <img src="assets/img/xbbb.png" alt="" class="home__img">
+            </div>
+
+            <div class="home__data">
+                <div class="home__header">
+
+                    <h2 class="home__subtitle" style="font-family: font-family: 'Raleway', sans-serif;">EXPERT AI</h2>
+                </div>
+
+                <div class="home__footer">
+                    <h3 class="home__title-description">Overview</h3>
+                    <p class="home__description">LunoSmart is a consolidated stack of intelligent expert systems, united with the shared purpose of serving humanity, enhancing efficiency and boosting productivity
+                    </p>
+                    <a href="#" class="button button--flex">
+                                <span class="button--flex">
+                                    <i class="ri-shopping-bag-line button__icon"></i></i> We build domain focused ai
+                                </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="sponsor section">
+        <div class="sponsor__container container grid">
+            <a href="https://icetip.lunosmart.com"  target="_blank">
+                <img src="assets/img/eee.png" alt="" class="sponsor__img">
+            </a>
+
+            <a href="https://kemi.lunosmart.com"  target="_blank">
+
+                <img src="assets/img/darwin.png" alt="" class="sponsor__img">
+            </a>
+            <img src="assets/img/lunosss.png" alt="" class="sponsor__img">
+
+            <div id="snackbar">This is a snackbar message</div>
+
+            <img src="assets/img/xxxz.gif" alt="" class="sponsor__img">
+        </div>
+    </section>
+
+
+    <section class="specs section grid" id="specs">
+        <h2 class="section__title section__title-gradient">Our Workflow</h2>
+
+        <div class="specs__container container grid">
+            <div class="specs__content grid">
+                <div class="specs__data">
+                    <i class="ri-lightbulb-flash-line specs__icon"></i>
+                    <h3 class="specs__title">Domain expertise</h3>
+                    <span class="specs__subtitle">Knowledge acquisition, rules<br>and data collection</span>
+                </div>
+
+                <div class="specs__data">
+                    <i class="ri-battery-charge-line specs__icon"></i>
+                    <h3 class="specs__title">Forward chaining</h3>
+                    <span class="specs__subtitle">Deep learning<br>on the domain data</span>
+                </div>
+
+                <div class="specs__data">
+                    <i class="ri-plug-line specs__icon"></i>
+                    <h3 class="specs__title">Inference</h3>
+                    <span class="specs__subtitle">Logical reasoning<br>and decision making</span>
+                </div>
+
+                <div class="specs__data">
+                    <i class="ri-mic-line specs__icon"></i>
+                    <h3 class="specs__title">Explanation</h3>
+                    <span class="specs__subtitle">Clarification of decision<br>and reasoning</span>
+                </div>
+            </div>
+
+            <div>
+                <img src="assets/img/reg.png" alt="" class="specs__img">
+            </div>
+        </div>
+    </section>
+
+    <!--=============== CASE ===============-->
+    <section class="case section grid" id="products">
+        <h3 class="section__title section__title-gradient"></h3>
+
+        <div class="case__container container grid">
+
+            <div>
+
+                <img src="assets/img/sadyx.jpg" alt="" class="case__img">
+            </div>
+
+            <div class="case__data">
+                <p class="case__description">"Our focus lies in leveraging domain expertise, integrating AI and prioritizing users"
+
+
+
+
+
+
+                </p>
+                <a class="buttonxy button--flex">
+                    Kosi, CEO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!--=============== DISCOUNT ===============-->
+
+    <!--
+
+    =============== PRODUCTS ===============
+    <section class="products section" id="x">
+        <h2 class="section__title section__title-gradient products__line">
+            Choose <br> Your Style
+        </h2>
+
+        <div class="products__container container grid">
+            <article class="products__card">
+                <div class="products__content">
+                    <img src="assets/img/product1.png" alt="" class="products__img">
+
+                    <h3 class="products__title">Black</h3>
+                    <span class="products__price">$249</span>
+
+                    <button class="button button--flex products__button">
+                        <i class="ri-shopping-bag-line button__icon"></i>
+                    </button>
+                </div>
+            </article>
+            <article class="products__card">
+                <div class="products__content">
+                    <img src="assets/img/product2.png" alt="" class="products__img">
+
+                    <h3 class="products__title">Red Black</h3>
+                    <span class="products__price">$249</span>
+
+                    <button class="button button--flex products__button">
+                        <i class="ri-shopping-bag-line button__icon"></i>
+                    </button>
+                </div>
+            </article>
+            <article class="products__card">
+                <div class="products__content">
+                    <img src="assets/img/product3.png" alt="" class="products__img">
+
+                    <h3 class="products__title">Night Black</h3>
+                    <span class="products__price">$249</span>
+
+                    <button class="button button--flex products__button">
+                        <i class="ri-shopping-bag-line button__icon"></i>
+                    </button>
+                </div>
+            </article>
+            <article class="products__card">
+                <div class="products__content">
+                    <img src="assets/img/product4.png" alt="" class="products__img">
+
+                    <h3 class="products__title">Blue</h3>
+                    <span class="products__price">$249</span>
+
+                    <button class="button button--flex products__button">
+                        <i class="ri-shopping-bag-line button__icon"></i>
+                    </button>
+                </div>
+            </article>
+
+            <article class="products__card">
+                <div class="products__content">
+                    <img src="assets/img/product5.png" alt="" class="products__img">
+
+                    <h3 class="products__title">Twilight gray</h3>
+                    <span class="products__price">$249</span>
+
+                    <button class="button button--flex products__button">
+                        <i class="ri-shopping-bag-line button__icon"></i>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+    -->
+</main>
+
+<!--=============== FOOTER ===============-->
+<footer class="footer section">
+    <div class="footer__container container grid">
+        <a href="#" class="footer__logo">
+            <img src="assets/img/sady.jpg" alt="">
+        </a>
+
+        <div class="footer__content">
+            <h3 class="footer__title">Products</h3>
+
+            <ul class="footer__links">
+                <li>
+                    <a href="https://icetip.lunosmart.com"  target="_blank" class="footer__link">Icetip</a>
+                </li>
+                <li>
+                    <a href="https://kemi.lunosmart.com"  target="_blank" class="footer__link">Kemi</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="footer__content">
+            <h3 class="footer__title">Company</h3>
+
+            <ul class="footer__links">
+
+                <li>
+                    <a href="https://github.com/Lunomind/"  target="_blank" class="footer__link">Github</a>
+                </li>
+
+
+                <li>
+                    <a href="https://lunosmart.medium.com/"  target="_blank" class="footer__link">Blogs</a>
+                </li>
+                <li>
+                    <a href="https://icetip.lunosmart.com/privacy"  target="_blank" class="footer__link">Privacy</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="footer__content">
+            <form action="" class="footer__form">
+                <input type="email" placeholder="Email" class="footer__input">
+                <button class="buttonxxy button--flex">
+                    <i class="ri-send-plane-line button__icon"></i> Subscribe
+                </button>
+            </form>
+
+            <div class="footer__social">
+                <a href="https://www.facebook.com/lunosmart"  target="_blank" class="footer__social-link">
+                    <i class="ri-facebook-fill"></i>
+                </a>
+                <a href="https://www.instagram.com/lunosmart" target="_blank" class="footer__social-link">
+                    <i class="ri-instagram-line"></i>
+                </a>
+                <a href="https://twitter.com/lunosmart" target="_blank" class="footer__social-link">
+                    <i class="ri-twitter-line"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <p class="footer__copy">
+        &#169; LunoSmart. All right reserved
+    </p>
+</footer>
+
+<!--=============== SCROLL UP ===============-->
+<a href="/" class="scrollup" id="scroll-up">
+    <i class="ri-arrow-up-s-line scrollup__icon"></i>
+</a>
+
+<!--=============== SCROLL REVEAL ===============-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--=============== MAIN JS ===============-->
+<script src="assets/js/main.js"></script>
+</body>
+</html>
