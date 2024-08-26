@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar build/libs/com.lunosmart.backend.kemi.jar
+web: java -Dserver.port=$PORT -jar build/libs/kemi-0.0.1-SNAPSHOT.jar
