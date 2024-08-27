@@ -19,7 +19,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.io.*;
 import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import org.springframework.ai.chat.client.ChatClient;
 
@@ -38,11 +37,16 @@ public class KemiApplication  implements WebMvcConfigurer{
 	}
 	public static void main(String[] args) throws IOException {
 		if (FirebaseApp.getApps().isEmpty()) {
-			String firebaseConfig = System.getenv("FIREBASE_SERVICE_ACCOUNT_KEY");
-			InputStream serviceAccount = new ByteArrayInputStream(firebaseConfig.getBytes(StandardCharsets.UTF_8));
+			ClassLoader classLoader = KemiApplication.class.getClassLoader();
+			InputStream inputStream = classLoader.getResourceAsStream("main/serviceAccountKey.json");
 
-			FirebaseOptions options = new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+			if (inputStream == null) {
+				throw new IllegalArgumentException("File not found! main/serviceAccountKey.json");
+			}
+
+			FirebaseOptions options = FirebaseOptions.builder()
+					.setCredentials(GoogleCredentials.fromStream(inputStream))
+					.setDatabaseUrl("https://lunosmartmobile.firebaseio.com")
 					.build();
 
 			FirebaseApp.initializeApp(options);

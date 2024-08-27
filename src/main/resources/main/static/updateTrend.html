@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Trend</title>
+</head>
+<body>
+<h1>Update Trend</h1>
+
+<form id="updateTrendForm">
+    <label for="photo">Photo URL:</label><br>
+    <input type="text" id="photo" name="photo"><br><br>
+
+    <label for="tag">Tag:</label><br>
+    <input type="text" id="tag" name="tag"><br><br>
+
+    <label for="reason">Reason:</label><br>
+    <input type="text" id="reason" name="reason"><br><br>
+
+    <button type="button" onclick="updateTrend()">Update Trend</button>
+</form>
+
+<p id="response"></p>
+
+<script>
+    function updateTrend() {
+        const photo = document.getElementById("photo").value;
+        const tag = document.getElementById("tag").value;
+        const reason = document.getElementById("reason").value;
+
+        const data = {
+            photo: photo,
+            tag: tag,
+            reason: reason,
+            timestamp: null  // Assuming you are not handling the timestamp in the form
+        };
+
+        fetch("http://localhost:8080/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("response").innerText = "Response: " + data;
+        })
+        .catch(error => {
+            document.getElementById("response").innerText = "Error: " + error;
+        });
+    }
+</script>
+</body>
+</html>
