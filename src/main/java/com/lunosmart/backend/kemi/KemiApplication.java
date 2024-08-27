@@ -17,11 +17,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import org.springframework.ai.chat.client.ChatClient;
 
@@ -40,14 +38,11 @@ public class KemiApplication  implements WebMvcConfigurer{
 	}
 	public static void main(String[] args) throws IOException {
 		if (FirebaseApp.getApps().isEmpty()) {
-			ClassLoader classLoader=KemiApplication.class.getClassLoader();
-			File file=new File(Objects.requireNonNull(classLoader.getResource("serviceAccountKey.json")).getFile());
-			String decodedPath = URLDecoder.decode(file.getAbsolutePath(), "UTF-8");
-			FileInputStream stream = new FileInputStream(decodedPath);
+			String firebaseConfig = System.getenv("FIREBASE_SERVICE_ACCOUNT_KEY");
+			InputStream serviceAccount = new ByteArrayInputStream(firebaseConfig.getBytes(StandardCharsets.UTF_8));
 
-			FirebaseOptions options = FirebaseOptions.builder()
-					.setCredentials(GoogleCredentials.fromStream(stream))
-					.setDatabaseUrl("https://lunosmartmobile.firebaseio.com")
+			FirebaseOptions options = new FirebaseOptions.Builder()
+					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
 					.build();
 
 			FirebaseApp.initializeApp(options);
