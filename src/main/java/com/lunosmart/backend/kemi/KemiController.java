@@ -34,12 +34,13 @@ public class KemiController {
 
     }
     @GetMapping("/ai")
-    public  String completion(@RequestParam(value = "message", defaultValue = "Tell me a joke") String message) {
+    public  String completion( @RequestParam(value = "message", defaultValue = "Tell me a joke") String message,
+                               @RequestParam(value = "system", defaultValue = "") String system){
 
 
         return chatClient.prompt()
                 .user(message)
-                .system("")
+                .system(system)
                 .call()
                 .content().toString();
     }
