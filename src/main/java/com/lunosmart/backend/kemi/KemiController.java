@@ -42,7 +42,7 @@ public class KemiController {
                 .user(message)
                 .system(system)
                 .call()
-                .content().toString();
+                .content().toString().replaceAll("#","").replaceAll("\\*","");
     }
     @GetMapping("/delete")
     public String deleteTrend(@RequestParam String id) throws ExecutionException, InterruptedException {

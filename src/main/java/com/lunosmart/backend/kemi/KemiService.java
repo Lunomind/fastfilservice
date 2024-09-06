@@ -51,7 +51,7 @@ public class KemiService {
 
     public void createTrend(trends trend) throws ExecutionException, InterruptedException {
         Firestore firestore= FirestoreClient.getFirestore();
-        firestore.collection("trends").add(trend);
+      //  firestore.collection("trends").add(trend);
 
 
 
