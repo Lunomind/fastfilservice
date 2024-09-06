@@ -34,7 +34,7 @@ public class KemiController {
 
     }
     @GetMapping("/ai")
-    public  String completion( @RequestParam(value = "message", defaultValue = "Tell me a joke") String message,
+    public  String completion( @RequestParam(value = "message", defaultValue = "") String message,
                                @RequestParam(value = "system", defaultValue = "") String system){
 
 
@@ -42,7 +42,7 @@ public class KemiController {
                 .user(message)
                 .system(system)
                 .call()
-                .content().toString().replaceAll("#","").replaceAll("\\*","");
+                .content().toString();
     }
     @GetMapping("/delete")
     public String deleteTrend(@RequestParam String id) throws ExecutionException, InterruptedException {

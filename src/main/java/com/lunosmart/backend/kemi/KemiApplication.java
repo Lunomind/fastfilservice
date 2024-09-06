@@ -46,7 +46,7 @@ public class KemiApplication  implements WebMvcConfigurer{
 
 			FirebaseOptions options = FirebaseOptions.builder()
 					.setCredentials(GoogleCredentials.fromStream(inputStream))
-					.setDatabaseUrl("https://lunosmartmobile.firebaseio.com")
+					.setDatabaseUrl("https://lunosmartapp.firebaseio.com")
 					.build();
 
 			FirebaseApp.initializeApp(options);
