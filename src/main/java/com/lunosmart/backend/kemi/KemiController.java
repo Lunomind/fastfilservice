@@ -40,7 +40,7 @@ public class KemiController {
 
         return chatClient.prompt()
                 .user(message)
-                .system(system)
+                .system(system+"\nNB: Please be brief, precise and straight forward")
                 .call()
                 .content().toString();
     }
