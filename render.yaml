@@ -1,7 +1,11 @@
 services:
-  - type: web
-    name: fcm-notification-service
-    env: java
-    buildCommand: ./mvnw clean install
-    startCommand: java -jar target/*.jar
+  - name: ScorePanda
+    type: web
+    env: docker # Use docker if deploying with Docker; use 'static' for Gradle-based Java
+    region: oregon # Choose your region (oregon, frankfurt, etc.)
+    buildCommand: "./gradlew build"
+    startCommand: "java -jar build/libs/kemi-0.0.1-SNAPSHOT.jar"
     plan: free
+    healthCheckPath: "/actuator/health"
+    autoDeploy: true
+

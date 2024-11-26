@@ -8,7 +8,7 @@ WORKDIR /app
 COPY build/libs/*.jar kemi-0.0.1-SNAPSHOT.jar
 
 # Expose the application port (e.g., 8080 for Spring Boot)
-EXPOSE 8080
+EXPOSE 10000
 
 # Run the jar file when the container starts
 CMD ["java", "-jar", "app.jar"]
