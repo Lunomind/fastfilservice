@@ -51,6 +51,22 @@ public class KemiController {
         return "deleted";
     }
 
+
+
+    @PostMapping("/send")
+    public String sendNotification(
+            @RequestParam String topic,
+            @RequestParam String title,
+            @RequestParam String body
+    ) {
+        kemiService.sendMessageToTopic(topic, title, body);
+        return "Notification sent to topic: " + topic;
+    }
+
+
+
+
+
     @GetMapping("/chat")
     public String chat(@RequestParam String message) throws ExecutionException, InterruptedException {
         return "deleted";

@@ -1,4 +1,6 @@
 package com.lunosmart.backend.kemi;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +30,22 @@ public class KemiService {
         } catch (Exception e) {
             logger.error("Failed to update trend", e);
             return "failed";
+        }
+    }
+
+    public void sendMessageToTopic(String topic, String title, String body) {
+        Message message = Message.builder()
+                .setTopic(topic)
+                .putData("title", title)
+                .putData("body", body)
+                .build();
+
+        try {
+            String response = FirebaseMessaging.getInstance().send(message);
+            System.out.println("Successfully sent message: " + response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error sending FCM message: " + e.getMessage());
         }
     }
 
