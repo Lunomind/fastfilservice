@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the application's jar file into the container
-COPY build/libs/*.jar kemi-0.0.1-SNAPSHOT.jar
+COPY build/libs/*.jar app.jar
 
 # Expose the application port (e.g., 8080 for Spring Boot)
 EXPOSE 10000
