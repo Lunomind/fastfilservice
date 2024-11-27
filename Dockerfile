@@ -1,15 +1,12 @@
-# Use an official OpenJDK runtime as the base image
-FROM openjdk:17-jdk-slim
-
-# Set the working directory inside the container
+# Build stage
+FROM gradle:8.5-jdk17 AS builder
 WORKDIR /app
+COPY . .
+RUN gradle build --no-daemon
 
-# Copy the application's jar file into the container
-COPY build/libs/kemi-0.0.1-SNAPSHOT.jar app.jar
-
-
-# Expose the application port (e.g., 8080 for Spring Boot)
+# Run stage
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=builder /app/build/libs/kemi-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 10000
-
-# Run the jar file when the container starts
 CMD ["java", "-jar", "app.jar"]
