@@ -33,17 +33,7 @@ public class KemiController {
         return  kemiService.getTrend(id);
 
     }
-    @GetMapping("/ai")
-    public  String completion( @RequestParam(value = "message", defaultValue = "") String message,
-                               @RequestParam(value = "system", defaultValue = "") String system){
 
-
-        return chatClient.prompt()
-                .user(message)
-                .system(system+"\nNB: Please be brief, precise and straight forward")
-                .call()
-                .content().toString();
-    }
     @GetMapping("/delete")
     public String deleteTrend(@RequestParam String id) throws ExecutionException, InterruptedException {
         Firestore firestore = FirestoreClient.getFirestore();

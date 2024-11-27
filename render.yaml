@@ -1,5 +1,5 @@
 services:
-  - name: ScorePanda
+  - name: FastfilService
     type: web
     env: java
     region: oregon
