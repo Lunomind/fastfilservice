@@ -1,6 +1,7 @@
 package com.lunosmart.backend.kemi;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.Message;
+import com.google.firebase.messaging.Notification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,21 +34,22 @@ public class KemiService {
         }
     }
 
-    public void sendMessageToTopic(String topic, String title, String body) {
-        Message message = Message.builder()
-                .setTopic(topic)
-                .putData("title", title)
-                .putData("body", body)
-                .build();
-
-        try {
-            String response = FirebaseMessaging.getInstance().send(message);
-            System.out.println("Successfully sent message: " + response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Error sending FCM message: " + e.getMessage());
-        }
+   public void sendMessageToTopic(String topic, String title, String body) {
+    Message message = Message.builder()
+            .setTopic(topic)
+            .setNotification(Notification.builder()
+                .setTitle(title)
+                .setBody(body)
+                .build())
+            .build();
+    try {
+        String response = FirebaseMessaging.getInstance().send(message);
+        System.out.println("Successfully sent message: " + response);
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.err.println("Error sending FCM message: " + e.getMessage());
     }
+}
 
     public trends getTrend(String id) throws ExecutionException, InterruptedException {
         Firestore firestore= FirestoreClient.getFirestore();
